@@ -1,0 +1,101 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+@import '/src/variables.scss';
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$online-store-primary: $primary-palette;
+$online-store-accent: $accent-palette;
+
+// The warn palette is optional (defaults to red).
+$online-store-warn: $warn-palette;
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$online-store-theme: mat.define-light-theme((
+  color: (
+    primary: $online-store-primary,
+    accent: $online-store-accent,
+    warn: $online-store-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($online-store-theme);
+
+/* You can add global styles to this file, and also import other style files */
+
+html { height: 100%; box-sizing: border-box; scroll-behavior: smooth; }
+body { margin: 0; height: 100%; font-family: Roboto, "Helvetica Neue", sans-serif; }
+*, *:before, *:after { box-sizing: inherit; }
+a { text-decoration: none; }
+a:link, a:visited, a:hover, a:active { color: inherit; }
+
+.spacer { flex: 1 1 auto; }
+.fit { width: 0.1%; }
+.hidden { display: none !important; }
+.click-through { pointer-events: none; }
+.page { margin: 0 auto; max-width: 1280px; }
+.row { display: flex; flex-direction: row; }
+.col { display: flex; flex-direction: column; }
+.hl { justify-content: flex-start; }
+.hc { justify-content: center; }
+.hr { justify-content: flex-end; }
+.vt { align-items: flex-start; }
+.vc { align-items: center; }
+.vb { align-items: flex-end; }
+.w100 { width: 100%; }
+.h100 { height: 100%; }
+
+@each $name, $color in $colors { 
+  .#{$name} { color: $color !important; }
+  .bg-#{$name} { background-color: $color !important; }
+  .b-#{$name} { border-color: $color !important; }
+  .bt-#{$name} { border-top-color: $color !important; }
+  .bb-#{$name} { border-bottom-color: $color !important; }
+  .bl-#{$name} { border-left-color: $color !important; }
+  .br-#{$name} { border-right-color: $color !important; }
+}
+
+@each $name, $gap in $gaps { 
+  .hg-#{$name} { > * + * { margin-left: $gap; } }
+  .vg-#{$name} { > * + * { margin-top: $gap; } }
+  .m-#{$name} { margin: $gap; }
+  .mt-#{$name} { margin-top: $gap; }
+  .mb-#{$name} { margin-bottom: $gap; }
+  .ml-#{$name} { margin-left: $gap; }
+  .mr-#{$name} { margin-right: $gap; }
+  .p-#{$name} { padding: $gap; }
+  .pt-#{$name} { padding-top: $gap; }
+  .pb-#{$name} { padding-bottom: $gap; }
+  .pl-#{$name} { padding-left: $gap; }
+  .pr-#{$name} { padding-right: $gap; }
+  .w50-#{$name} { width: calc((100% - $gap) / 2); }
+  .h50-#{$name} { height: calc((100% - $gap) / 2); }
+  .w33-#{$name} { width: calc((100% - $gap * 2) / 3); }
+  .h33-#{$name} { height: calc((100% - $gap * 2) / 3); }
+  .w66-#{$name} { width: calc((100% - $gap * 2) / 3 * 2 + $gap); }
+  .h66-#{$name} { height: calc((100% - $gap * 2) / 3 * 2 + $gap); }
+}
+
+.bs { border-width: 1px; border-style: solid; }
+.bst { border-top-width: 1px; border-top-style: solid; }
+.bsb { border-bottom-width: 1px; border-bottom-style: solid; }
+.bsl { border-left-width: 1px; border-left-style: solid; }
+.bsr { border-right-width: 1px; border-right-style: solid; }
+.r { border-radius: $radius; }
+.rtl { border-top-left-radius: $radius; }
+.rtr { border-top-right-radius: $radius; }
+.rbl { border-bottom-left-radius: $radius; }
+.rbr { border-bottom-right-radius: $radius; }
+.sf { font-size: $small-font !important; }

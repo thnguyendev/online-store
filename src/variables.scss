@@ -1,0 +1,42 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+// palettes
+$primary-palette: mat.define-palette(mat.$amber-palette);
+$accent-palette: mat.define-palette(mat.$blue-palette, A200, A100, A400);
+$warn-palette: mat.define-palette(mat.$red-palette);
+// colors
+$primary: map.get($primary-palette, 500);
+$accent: map.get($accent-palette, A200);
+$warn: map.get($warn-palette, 500);
+$black: #000000;
+$white: #ffffff;
+$grey-1: rgba(0, 0, 0, 87%);
+$grey-2: rgba(0, 0, 0, 60%);
+$grey-3: rgba(0, 0, 0, 38%);
+$colors: (
+  'primary': $primary,
+  'accent': $accent,
+  'warn': $warn,
+  'black': $black,
+  'white': $white,
+  'grey-1': $grey-1,
+  'grey-2': $grey-2,
+  'grey-3': $grey-3,
+);
+// lengths
+$gap-1: 8px;
+$gap-2: 16px;
+$gap-3: 24px;
+$gap-4: 32px;
+$gaps: (
+  '0': 0px,
+  '1': $gap-1,
+  '2': $gap-2,
+  '3': $gap-3,
+  '4': $gap-4,
+);
+// radiuses
+$radius: 4px;
+// font
+$small-font: 12px;
