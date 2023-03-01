@@ -1,4 +1,3 @@
-
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
 @use '@angular/material' as mat;
@@ -20,13 +19,10 @@ $online-store-warn: $warn-palette;
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$online-store-theme: mat.define-light-theme((
-  color: (
-    primary: $online-store-primary,
-    accent: $online-store-accent,
-    warn: $online-store-warn,
-  )
-));
+$online-store-theme: mat.define-light-theme((color: (primary: $online-store-primary,
+        accent: $online-store-accent,
+        warn: $online-store-warn,
+      )));
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
@@ -35,67 +31,489 @@ $online-store-theme: mat.define-light-theme((
 
 /* You can add global styles to this file, and also import other style files */
 
-html { height: 100%; box-sizing: border-box; scroll-behavior: smooth; }
-body { margin: 0; height: 100%; font-family: Roboto, "Helvetica Neue", sans-serif; }
-*, *:before, *:after { box-sizing: inherit; }
-a { text-decoration: none; }
-a:link, a:visited, a:hover, a:active { color: inherit; }
-
-.spacer { flex: 1 1 auto; }
-.fit { width: 0.1%; }
-.hidden { display: none !important; }
-.click-through { pointer-events: none; }
-.page { margin: 0 auto; max-width: 1280px; }
-.row { display: flex; flex-direction: row; }
-.col { display: flex; flex-direction: column; }
-.hl { justify-content: flex-start; }
-.hc { justify-content: center; }
-.hr { justify-content: flex-end; }
-.vt { align-items: flex-start; }
-.vc { align-items: center; }
-.vb { align-items: flex-end; }
-.w100 { width: 100%; }
-.h100 { height: 100%; }
-
-@each $name, $color in $colors { 
-  .#{$name} { color: $color !important; }
-  .bg-#{$name} { background-color: $color !important; }
-  .b-#{$name} { border-color: $color !important; }
-  .bt-#{$name} { border-top-color: $color !important; }
-  .bb-#{$name} { border-bottom-color: $color !important; }
-  .bl-#{$name} { border-left-color: $color !important; }
-  .br-#{$name} { border-right-color: $color !important; }
+html {
+  height: 100%;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
-@each $name, $gap in $gaps { 
-  .hg-#{$name} { > * + * { margin-left: $gap; } }
-  .vg-#{$name} { > * + * { margin-top: $gap; } }
-  .m-#{$name} { margin: $gap; }
-  .mt-#{$name} { margin-top: $gap; }
-  .mb-#{$name} { margin-bottom: $gap; }
-  .ml-#{$name} { margin-left: $gap; }
-  .mr-#{$name} { margin-right: $gap; }
-  .p-#{$name} { padding: $gap; }
-  .pt-#{$name} { padding-top: $gap; }
-  .pb-#{$name} { padding-bottom: $gap; }
-  .pl-#{$name} { padding-left: $gap; }
-  .pr-#{$name} { padding-right: $gap; }
-  .w50-#{$name} { width: calc((100% - $gap) / 2); }
-  .h50-#{$name} { height: calc((100% - $gap) / 2); }
-  .w33-#{$name} { width: calc((100% - $gap * 2) / 3); }
-  .h33-#{$name} { height: calc((100% - $gap * 2) / 3); }
-  .w66-#{$name} { width: calc((100% - $gap * 2) / 3 * 2 + $gap); }
-  .h66-#{$name} { height: calc((100% - $gap * 2) / 3 * 2 + $gap); }
+body {
+  margin: 0;
+  height: 100%;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-.bs { border-width: 1px; border-style: solid; }
-.bst { border-top-width: 1px; border-top-style: solid; }
-.bsb { border-bottom-width: 1px; border-bottom-style: solid; }
-.bsl { border-left-width: 1px; border-left-style: solid; }
-.bsr { border-right-width: 1px; border-right-style: solid; }
-.r { border-radius: $radius; }
-.rtl { border-top-left-radius: $radius; }
-.rtr { border-top-right-radius: $radius; }
-.rbl { border-bottom-left-radius: $radius; }
-.rbr { border-bottom-right-radius: $radius; }
-.sf { font-size: $small-font !important; }
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:link,
+a:visited,
+a:hover,
+a:active {
+  color: inherit;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.fit {
+  width: 0.1%;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.click-through {
+  pointer-events: none;
+}
+
+.page {
+  margin: 0 auto;
+  max-width: 1280px;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.wrap {
+  flex-wrap: wrap;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+}
+
+.hl {
+  justify-content: flex-start;
+}
+
+.hc {
+  justify-content: center;
+}
+
+.hr {
+  justify-content: flex-end;
+}
+
+.hb {
+  justify-content: space-between;
+}
+
+.vt {
+  align-items: flex-start;
+}
+
+.vc {
+  align-items: center;
+}
+
+.vb {
+  align-items: flex-end;
+}
+
+@each $name,
+$color in $colors {
+  .#{$name} {
+    color: $color !important;
+  }
+
+  .bg-#{$name} {
+    background-color: $color !important;
+  }
+
+  .b-#{$name} {
+    border-color: $color !important;
+  }
+
+  .bt-#{$name} {
+    border-top-color: $color !important;
+  }
+
+  .bb-#{$name} {
+    border-bottom-color: $color !important;
+  }
+
+  .bl-#{$name} {
+    border-left-color: $color !important;
+  }
+
+  .br-#{$name} {
+    border-right-color: $color !important;
+  }
+}
+
+@each $name,
+$gap in $gaps {
+  .m-#{$name} {
+    margin: $gap;
+  }
+
+  .mt-#{$name} {
+    margin-top: $gap;
+  }
+
+  .mb-#{$name} {
+    margin-bottom: $gap;
+  }
+
+  .ml-#{$name} {
+    margin-left: $gap;
+  }
+
+  .mr-#{$name} {
+    margin-right: $gap;
+  }
+
+  .p-#{$name} {
+    padding: $gap;
+  }
+
+  .pt-#{$name} {
+    padding-top: $gap;
+  }
+
+  .pb-#{$name} {
+    padding-bottom: $gap;
+  }
+
+  .pl-#{$name} {
+    padding-left: $gap;
+  }
+
+  .pr-#{$name} {
+    padding-right: $gap;
+  }
+
+  @media screen and (max-width: $medium-screen) {
+    .s-m-#{$name} {
+      margin: $gap;
+    }
+
+    .s-mt-#{$name} {
+      margin-top: $gap;
+    }
+
+    .s-mb-#{$name} {
+      margin-bottom: $gap;
+    }
+
+    .s-ml-#{$name} {
+      margin-left: $gap;
+    }
+
+    .s-mr-#{$name} {
+      margin-right: $gap;
+    }
+
+    .s-p-#{$name} {
+      padding: $gap;
+    }
+
+    .s-pt-#{$name} {
+      padding-top: $gap;
+    }
+
+    .s-pb-#{$name} {
+      padding-bottom: $gap;
+    }
+
+    .s-pl-#{$name} {
+      padding-left: $gap;
+    }
+
+    .s-pr-#{$name} {
+      padding-right: $gap;
+    }
+  }
+
+  @media screen and (min-width: $medium-screen) and (max-width: $large-screen) {
+    .m-m-#{$name} {
+      margin: $gap;
+    }
+
+    .m-mt-#{$name} {
+      margin-top: $gap;
+    }
+
+    .m-mb-#{$name} {
+      margin-bottom: $gap;
+    }
+
+    .m-ml-#{$name} {
+      margin-left: $gap;
+    }
+
+    .m-mr-#{$name} {
+      margin-right: $gap;
+    }
+
+    .m-p-#{$name} {
+      padding: $gap;
+    }
+
+    .m-pt-#{$name} {
+      padding-top: $gap;
+    }
+
+    .m-pb-#{$name} {
+      padding-bottom: $gap;
+    }
+
+    .m-pl-#{$name} {
+      padding-left: $gap;
+    }
+
+    .m-pr-#{$name} {
+      padding-right: $gap;
+    }
+  }
+
+  @media screen and (min-width: $large-screen) {
+    .l-m-#{$name} {
+      margin: $gap;
+    }
+
+    .l-mt-#{$name} {
+      margin-top: $gap;
+    }
+
+    .l-mb-#{$name} {
+      margin-bottom: $gap;
+    }
+
+    .l-ml-#{$name} {
+      margin-left: $gap;
+    }
+
+    .l-mr-#{$name} {
+      margin-right: $gap;
+    }
+
+    .l-p-#{$name} {
+      padding: $gap;
+    }
+
+    .l-pt-#{$name} {
+      padding-top: $gap;
+    }
+
+    .l-pb-#{$name} {
+      padding-bottom: $gap;
+    }
+
+    .l-pl-#{$name} {
+      padding-left: $gap;
+    }
+
+    .l-pr-#{$name} {
+      padding-right: $gap;
+    }
+  }
+}
+
+.w33 {
+  width: 33.33333333%;
+}
+
+.h33 {
+  height: 33.33333333%;
+}
+
+.w50 {
+  width: 50%;
+}
+
+.h50 {
+  height: 50%;
+}
+
+.w66 {
+  width: 66.66666667%;
+}
+
+.h66 {
+  height: 66.66666667%;
+}
+
+.w100 {
+  width: 100%;
+}
+
+.h100 {
+  height: 100%;
+}
+
+@media screen and (max-width: $medium-screen) {
+  .s-hidden {
+    display: none;
+  }
+
+  .s-w33 {
+    width: 33.33333333%;
+  }
+
+  .s-h33 {
+    height: 33.33333333%;
+  }
+
+  .s-w50 {
+    width: 50%;
+  }
+
+  .s-h50 {
+    height: 50%;
+  }
+
+  .s-w66 {
+    width: 66.66666667%;
+  }
+
+  .s-h66 {
+    height: 66.66666667%;
+  }
+
+  .s-w100 {
+    width: 100%;
+  }
+
+  .s-h100 {
+    height: 100%;
+  }
+}
+
+@media screen and (min-width: $medium-screen) and (max-width: $large-screen) {
+  .m-hidden {
+    display: none;
+  }
+
+  .m-w33 {
+    width: 33.33333333%;
+  }
+
+  .m-h33 {
+    height: 33.33333333%;
+  }
+
+  .m-w50 {
+    width: 50%;
+  }
+
+  .m-h50 {
+    height: 50%;
+  }
+
+  .m-w66 {
+    width: 66.66666667%;
+  }
+
+  .m-h66 {
+    height: 66.66666667%;
+  }
+
+  .m-w100 {
+    width: 100%;
+  }
+
+  .m-h100 {
+    height: 100%;
+  }
+}
+
+@media screen and (min-width: $large-screen) {
+  .l-hidden {
+    display: none;
+  }
+
+  .l-w33 {
+    width: 33.33333333%;
+  }
+
+  .l-h33 {
+    height: 33.33333333%;
+  }
+
+  .l-w50 {
+    width: 50%;
+  }
+
+  .l-h50 {
+    height: 50%;
+  }
+
+  .l-w66 {
+    width: 66.66666667%;
+  }
+
+  .l-h66 {
+    height: 66.66666667%;
+  }
+
+  .l-w100 {
+    width: 100%;
+  }
+
+  .l-h100 {
+    height: 100%;
+  }
+}
+
+.bs {
+  border-width: 1px;
+  border-style: solid;
+}
+
+.bst {
+  border-top-width: 1px;
+  border-top-style: solid;
+}
+
+.bsb {
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+}
+
+.bsl {
+  border-left-width: 1px;
+  border-left-style: solid;
+}
+
+.bsr {
+  border-right-width: 1px;
+  border-right-style: solid;
+}
+
+.r {
+  border-radius: $radius;
+}
+
+.rtl {
+  border-top-left-radius: $radius;
+}
+
+.rtr {
+  border-top-right-radius: $radius;
+}
+
+.rbl {
+  border-bottom-left-radius: $radius;
+}
+
+.rbr {
+  border-bottom-right-radius: $radius;
+}
+
+.sf {
+  font-size: $small-font !important;
+}

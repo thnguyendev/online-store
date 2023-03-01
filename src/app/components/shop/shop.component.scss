@@ -1,0 +1,14 @@
+shop-component {
+  .image {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%;
+
+    img {
+      position: absolute;
+      margin-top: -56.25%;
+      max-width: auto;
+      height: 100%;
+    }
+  }
+}
