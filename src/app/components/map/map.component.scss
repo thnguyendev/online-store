@@ -1,0 +1,11 @@
+@import '/node_modules/ol/ol.css';
+
+map-component {
+  .map {
+    height: 50vh;
+  }
+  .tooltip {
+    position: absolute;
+    z-index: 1;
+  }
+}

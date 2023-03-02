@@ -1,0 +1,5 @@
+<div class="page">
+  <div #map class="w100 map" (mousemove)="showTooltip($event)" (mouseleave)="hideTooltip()"></div>
+  <div class="tooltip" [style.top.px]="tooltip.top" [style.left.px]="tooltip.left" [class.hidden]="tooltip.off"
+    [innerHTML]="tooltip.content"></div>
+</div>
