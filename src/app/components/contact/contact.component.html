@@ -1,12 +1,12 @@
 <form [formGroup]="form" class="col">
-  <div class="row">
-    <div class="w50 pr-1">
+  <div class="row wrap">
+    <div class="s-w100 m-w100 l-w50 m-pr-0 l-pr-1">
       <mat-form-field class="w100">
         <input matInput type="text" formControlName="name" placeholder="Name">
         <mat-error *ngIf="form.get('name')?.invalid">{{getErrors('name')}}</mat-error>
       </mat-form-field>
     </div>
-    <div class="w50 pl-1">
+    <div class="s-w100 m-w100 l-w50 m-pl-0 l-pl-1">
       <mat-form-field class="w100">
         <input matInput type="email" formControlName="email" placeholder="Email">
         <mat-error *ngIf="form.get('email')?.invalid">{{getErrors('email')}}</mat-error>
@@ -21,7 +21,7 @@
     <textarea matInput formControlName="message" placeholder="Message" rows="4"></textarea>
     <mat-error *ngIf="form.get('message')?.invalid">{{getErrors('message')}}</mat-error>
   </mat-form-field>
-  <div class="mt-3">
+  <div class="mt-2">
     <button mat-flat-button type="submit" class="bg-primary" [disabled]="form.invalid">Submit</button>
   </div>
 </form>

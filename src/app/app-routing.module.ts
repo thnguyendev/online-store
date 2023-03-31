@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ContactComponent } from './components/contact/contact.component';
 import { MasterPageComponent } from './pages/master-page/master-page.component';
+import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
   {
     path: '', component: MasterPageComponent, children: [
-      { path: '', component: ContactComponent },
+      { path: '', component: HomeComponent },
     ]
   },
 ];

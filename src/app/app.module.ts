@@ -19,6 +19,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { ShopComponent } from './components/shop/shop.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { MapComponent } from './components/map/map.component';
+import { LocationComponent } from './components/location/location.component';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,8 @@ import { MapComponent } from './components/map/map.component';
     ShopComponent,
     ContactComponent,
     MapComponent,
+    LocationComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
