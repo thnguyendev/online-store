@@ -3,6 +3,7 @@
 map-component {
   .map {
     height: 50vh;
+    overflow: hidden;
   }
   .tooltip {
     position: absolute;
