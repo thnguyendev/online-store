@@ -1,4 +1,5 @@
 import { Component, ViewEncapsulation } from "@angular/core";
+import { ProfileService } from "@app/services/profile.service";
 
 @Component({
   selector: 'home-component',
@@ -7,4 +8,11 @@ import { Component, ViewEncapsulation } from "@angular/core";
   encapsulation: ViewEncapsulation.None,
 })
 export class HomeComponent {
+  profile: any;
+
+  constructor(private profileService: ProfileService) {}
+
+  ngOnInit() {
+    this.profileService.getProfile().subscribe(res => this.profile = res);
+  }
 }

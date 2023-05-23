@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from "@angular/core";
+import { Component, Input, ViewEncapsulation } from "@angular/core";
 
 @Component({
   selector: 'location-component',
@@ -7,4 +7,7 @@ import { Component, ViewEncapsulation } from "@angular/core";
   encapsulation: ViewEncapsulation.None,
 })
 export class LocationComponent {
+  @Input() address?: string;
+  @Input() phone?: string;
+  @Input() email?: string;
 }

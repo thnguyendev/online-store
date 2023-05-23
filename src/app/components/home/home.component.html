@@ -1,8 +1,10 @@
 <div class="page col pt-3 pb-4">
   <shop-component id="shop"></shop-component>
   <div class="row wrap mt-3">
-    <location-component class="s-w100 m-w100 l-w50"></location-component>
+    <location-component class="s-w100 m-w100 l-w50" [address]="profile.address" [phone]="profile.phone"
+      [email]="profile.email"></location-component>
     <contact-component id="contact" class="s-w100 m-w100 l-w50 s-mt-3 m-mt-3"></contact-component>
   </div>
-  <map-component class="mt-4"></map-component>
+  <map-component class="mt-4" [address]="profile.address" [latitude]="profile.latitude"
+    [longitude]="profile.longitude"></map-component>
 </div>

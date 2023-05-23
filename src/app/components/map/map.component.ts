@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, ViewChild, ViewEncapsulation } from "@angular/core";
+import { AfterViewInit, Component, ElementRef, Input, ViewChild, ViewEncapsulation } from "@angular/core";
 import { Style, Fill, Circle } from 'ol/style';
 import Map from 'ol/Map';
 import View from 'ol/View';
@@ -17,16 +17,20 @@ import * as proj from 'ol/proj';
   encapsulation: ViewEncapsulation.None,
 })
 export class MapComponent implements AfterViewInit {
+  @Input() address?: string;
+  @Input() latitude?: number;
+  @Input() longitude?: number;
   @ViewChild('map') mapElement?: ElementRef;
   tooltip = {
     top: 0,
     left: 0,
-    content: 'address',
+    content: '',
     off: true,
   };
   map?: Map;
 
   ngAfterViewInit() {
+    let coordinate = proj.fromLonLat([this.longitude ?? 0, this.latitude ?? 0]);
     this.map = new Map({
       layers: [
         new TileLayer({
@@ -35,16 +39,16 @@ export class MapComponent implements AfterViewInit {
       ],
       target: this.mapElement?.nativeElement,
       view: new View({
-        center: proj.fromLonLat([109.1812897, 12.2424043]),
+        center: coordinate,
         zoom: 16,
       }),
     });
     let marker = new Feature({
-      geometry: new Point(proj.fromLonLat([109.1812897, 12.2424043]))
+      geometry: new Point(coordinate)
     });
     marker.setStyle(new Style({
       image: new Circle({
-        radius: 6,
+        radius: 8,
         fill: new Fill({
           color: '#448aff'
         }),
@@ -64,6 +68,7 @@ export class MapComponent implements AfterViewInit {
     if (pixel) {
       const feature = this.map?.forEachFeatureAtPixel(pixel, _feature => _feature);
       if (feature) {
+        this.tooltip.content = this.address ?? '';
         this.tooltip.left = pixel[0] + this.mapElement?.nativeElement.offsetLeft;
         this.tooltip.top = pixel[1] + this.mapElement?.nativeElement.offsetTop + 16;
         this.tooltip.off = false;
