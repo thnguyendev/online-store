@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://localhost:5236'
+  apiUrl: 'https://canden-pacific-api.azurewebsites.net'
 };
